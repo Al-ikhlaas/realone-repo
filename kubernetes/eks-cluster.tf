@@ -1,3 +1,5 @@
+
+
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 19.0"
@@ -16,7 +18,8 @@ module "eks" {
   
 
   cluster_name = "myAppp-eks-cluster"  
-  cluster_version = "1.27"
+  cluster_version = "1.29"
+
 
   subnet_ids = module.myAppp-vpc.private_subnets
   vpc_id = module.myAppp-vpc.vpc_id
@@ -32,8 +35,8 @@ module "eks" {
       max_size     = 6
       desired_size = 3
 
-      instance_types = ["t2.small"]
-      key_name       = "devopskeypair"
+      instance_types = ["t2.xlarge"]
+      key_name       = "Oyakhirekp"
     }
   }
 }

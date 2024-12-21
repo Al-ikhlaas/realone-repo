@@ -1,7 +1,7 @@
 # configured aws provider with proper credentials
 provider "aws" {
   region    = "us-east-1"
-  profile   = "yusuf"   #change this
+  profile   = "Oyakhire1"   #change this
 }
 
 
@@ -29,8 +29,8 @@ resource "aws_default_subnet" "default_az1" {
 
 
 # create security group for the ec2 instance
-resource "aws_security_group" "ec2_security_group4" {
-  name        = "ec2 security group4"
+resource "aws_security_group" "ec2_security_groupk8s" {
+  name        = "ec2 security groupk8s"
   description = "allow access on ports 8080 and 22"
   vpc_id      = aws_default_vpc.default_vpc.id
 
@@ -103,10 +103,10 @@ data "aws_ami" "ubuntu" {
 # launch the ec2 instance
 resource "aws_instance" "ec2_instance" {
   ami                    = data.aws_ami.ubuntu.id
-  instance_type          = "t2.small"
+  instance_type          = "t2.xlarge"
   subnet_id              = aws_default_subnet.default_az1.id
-  vpc_security_group_ids = [aws_security_group.ec2_security_group4.id]
-  key_name               = "devopskeypair"   #change this
+  vpc_security_group_ids = [aws_security_group.ec2_security_groupk8s.id]
+  key_name               = "Oyakhirekp"   #change this
   user_data = "${file("install_jenkins.sh")}"
 
   tags = {
